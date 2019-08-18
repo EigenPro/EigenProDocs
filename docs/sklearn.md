@@ -8,11 +8,11 @@ After importing sklearn, we can easily fit to some example data. First, we shoul
 
 
 ```python
-from sklearn.fast_kernel import FKC_EigenPro
+from sklearn_extra.kernel_methods import EigenProClassifier
 import numpy as np
 ```
 
-!> Here we are running classification, you can also import FKR_EigenPro to run regression.
+!> Here we are running classification, you can also import EigenProRegressor to run regression.
 
 Next, we need to load the data. Here we choose 4000 samples with 20 features each, and we want to classify them as 0, 1, or 2.
 
@@ -26,7 +26,7 @@ y_train = rng.randint(n_targets, size=n_samples)
 Finally, we are done with setup and can create the classifier. We choose a low subsample size since there isn't much data, and use a Gaussian kernel (default) with bandwidth 1.
 
 ```python
-classifier = FKC_EigenPro(n_epoch=3, bandwidth=1, subsample_size=50)
+classifier = EigenProClassifier(n_epoch=3, gamma=.5, subsample_size=50)
 ```
 
 We use the fit function to fit the data with the classifier. Then we use the predict function to predict new labels.
